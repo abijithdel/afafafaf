@@ -176,3 +176,9 @@ body {
 #carouselExampleCaptions .carousel-inner .carousel-item img{
   border-radius: 10px;
 }
+
+/* footer  */
+footer .footer-section .footer-contact a{
+  text-decoration: none;
+  color: white;
+}
