@@ -6,6 +6,11 @@ body {
   color: white;
 }
 
+/* title Acme */
+.title-Acme{
+  font-family: Acme;
+}
+
 /* nav bar */
 .navbar{
   background-color: rgb(15, 20, 31);
@@ -164,4 +169,10 @@ body {
 }
 .modal .modal-dialog{
   background-color: #1a2c4d;
+}
+
+/* slide */
+
+#carouselExampleCaptions .carousel-inner .carousel-item img{
+  border-radius: 10px;
 }

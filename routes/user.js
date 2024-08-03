@@ -4,6 +4,7 @@ var Video = require('../helperDB/video')
 var User = require('../helperDB/user')
 var bcrypt = require('bcrypt');
 const Category = require('../helperDB/category')
+const Slider = require('../helperDB/slider')
 
 /* GET home page. */
 const userlogin=(req,res,nest)=>{
@@ -18,7 +19,8 @@ router.get('/', async (req, res) => {
   try {
       const media = await Video.find();
       const newCategory = await Category.find()
-      res.render('user/index', { newCategory,media , user:req.session.userSession}); 
+      const sliderData = await Slider.find()
+      res.render('user/index', { newCategory,media , user:req.session.userSession,sliderData}); 
   } catch (error) {
       res.status(500).send('Error fetching media');
   }

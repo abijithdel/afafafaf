@@ -4,6 +4,8 @@ const { upload, uploadImg } = require('../config/multerConfig');
 const Video = require('../helperDB/video');
 const User = require('../helperDB/user');
 const Category = require('../helperDB/category');
+const uploadSlider = require('../helperDB/slider-img');
+const Slider = require('../helperDB/slider')
 
 const userlogin=(req,res,nest)=>{
   if(req.session.login){
@@ -303,7 +305,7 @@ router.post('/user-edit/:id', async (req, res) => {
   }
 });
 
-router.get('/delete-user/:id', async (req, res) => {
+router.get('/delete-user/:id',userlogin, async (req, res) => {
   const role = req.session.userSession?.role;
   
   if (role !== 'admin') {
@@ -331,5 +333,48 @@ router.get('/delete-user/:id', async (req, res) => {
   }
 });
 
+router.get('/create-slider',userlogin,async(req,res)=>{
+  var role = req.session.userSession.role
+  if (role === 'admin'){
+    var admin =true
+    res.render('admin/slider',{ admin }) 
+  }else{
+    admin =false
+    res.redirect('/')
+  }
 
+})
+
+router.post('/create-slider', uploadSlider.single('sliderimg'), async (req, res) => {
+  try {
+    const { name, description, path } = req.body;
+    const imgPath = req.file ? req.file.path : '';
+    const imgFilename = req.file ? req.file.filename : '';
+
+    const newSlider = new Slider({
+      name,
+      ndescriptioname: description,
+      path, // Use the path field from the form
+      img: imgFilename // Store the filename
+    });
+
+    await newSlider.save();
+    res.send('Done')
+  } catch (error) {
+    console.error('Error creating slider:', error); // Log error for debugging
+    res.status(500).json({ message: 'Error creating slider', error });
+  }
+});
+
+router.get('/all-slider',userlogin, async (req,res)=>{
+  var role = req.session.userSession.role
+  if (role === 'admin'){
+    var admin =true
+    var data = await Slider.find()
+    res.render('admin/all-slider',{data,admin})
+  }else{
+    admin =false
+    res.redirect('/')
+  }
+})
 module.exports = router;

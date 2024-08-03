@@ -1,0 +1,24 @@
+<title>Admin slider</title>
+<div class="container">
+    <h2 class="text-center m-3">Create New Slider</h2>
+    <form class="new-category" action="/admin/create-slider" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" placeholder="Enter New Slider Name" required />
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" name="description" placeholder="Enter New Category Description"
+                required />
+        </div>
+        <div class="mb-3">
+            <label for="path" class="form-label">Path</label>
+            <input type="text" class="form-control" name="path" placeholder="Enter New Category Path" required />
+        </div>
+        <div class="mb-3">
+            <label for="sliderimg" class="form-label">Slider Image</label>
+            <input type="file" class="form-control" name="sliderimg" />
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
