@@ -1,0 +1,33 @@
+<title>All Videos</title>
+<div class="container">
+    <h1 class="text-center">All Videos</h1>
+    <table class="table">
+        <thead class="text-white">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Video</th>
+                <th scope="col">Edit / Delete</th>
+            </tr>
+        </thead>
+        <tbody class="text-white">
+            {{#each data}}
+            <tr>
+                <th scope="row">{{@index}}</th>
+                <td>{{truncate this.title 30}}</td>
+                <td>{{truncate this.description 50}}</td>
+                <td>
+                    <a href="/video/{{this._id}}">
+                        <img src="/{{this.imgPath}}" alt="image" style="width: 40px; height: 40px; border-radius: 10px;">
+                    </a>
+                </td>
+                <td>
+                    <a href="/admin/edit-videos/{{this._id}}" class="btn btn-info mt-1">Edit</a>
+                    <a href="/admin/delete-videos/{{this._id}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

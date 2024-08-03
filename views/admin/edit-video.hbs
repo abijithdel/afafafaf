@@ -1,0 +1,39 @@
+<title>Update Video</title>
+
+{{#if success}}
+<div class="alert alert-success mb-3 mt-3" role="alert">
+    {{success}}
+</div>
+{{/if}}
+<h2 class="text-center update-title">Update Video</h2>
+<div></div>
+<div class="container mt-5">
+    <form method="post" action="/admin/edit-videos/{{data._id}}" enctype="multipart/form-data">
+        <div class="create-video mt-5">
+            <div class="mb-3 mt-5 update-label">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" placeholder="Video Title" value="{{data.title}}">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control"  name="description" placeholder="Video Description" value="{{data.description}}">
+            </div>
+            <div class="mb-3">
+                <label for="video" class="form-label">Video</label>
+                <p>{{data.videoPath}}</p>
+                <input type="file" class="form-control" name="video" placeholder="Select Video">
+            </div>
+            <div class="mb-3">
+                <label for="img" class="form-label">Image</label>
+                <p>{{data.imgPath}}</p>
+                <input type="file" class="form-control" name="img" placeholder="Select Image">
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" class="form-control" name="category" placeholder="exp; anime / movie / name "
+                    value="{{data.category}}">
+            </div>
+            <button type="submit" class="btn btn-primary mb-5">Update</button>
+        </div>
+    </form>
+</div>

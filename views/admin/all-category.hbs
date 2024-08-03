@@ -1,0 +1,27 @@
+<title>All Category</title>
+<div class="container">
+    <h1 class="text-center m-4">All Category</h1>
+    <table class="table">
+        <thead class="text-white">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">ID</th>
+                <th scope="col">Edit / Delete</th>
+            </tr>
+        </thead>
+        <tbody class="text-white">
+            {{#each data}}
+            <tr>
+                <th scope="row">{{@index}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this._id}}</td>
+                <td>
+                    <a href="/admin/edit-category/{{this._id}}" class="btn btn-info mt-1">Edit</a>
+                    <a href="/admin/delete-category/{{this._id}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

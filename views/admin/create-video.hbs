@@ -1,0 +1,34 @@
+<title>Upload New Video</title>
+{{#if success}}
+<div class="alert alert-success mb-3 mt-3" role="alert">
+    {{success}}
+</div>
+{{/if}}
+<h2 class="text-center mt-5">Upload New Video</h2>
+<div class="container">
+    <form method="post" action="/admin/create-video" enctype="multipart/form-data">
+        <div class="create-video mt-5">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" placeholder="Video Title">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <input type="text" class="form-control" name="description" placeholder="Video Description">
+            </div>
+            <div class="mb-3">
+                <label for="video" class="form-label">Video</label>
+                <input type="file" class="form-control" name="video" placeholder="Select Video">
+            </div>
+            <div class="mb-3">
+                <label for="img" class="form-label">Image</label>
+                <input type="file" class="form-control" name="img" placeholder="Select Image">
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" class="form-control" name="category" placeholder="exp; anime / movie / name ">
+            </div>
+            <button type="submit" class="btn btn-primary mb-5">Upload</button>
+        </div>
+    </form>
+</div>

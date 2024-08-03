@@ -1,0 +1,18 @@
+<title>Search</title>
+<div class="container mt-4">
+    <div class="row">
+        {{#each videos}}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="thumbnail">
+                <a href="/video/{{this._id}}"><img src="/{{this.imgPath}}" alt="Thumbnail" class="img-fluid"></a>
+                <div class="pt-2">
+                    <h5 class="mb-1">{{this.title}}</h5>
+                    <a href="">
+                        <p class="text-muted mb-1">{{this.category}}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

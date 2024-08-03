@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: roboto;
+  background-color: rgb(15, 27, 51);
+  color: white;
+}
+
+/* nav bar */
+.navbar{
+  background-color: rgb(15, 20, 31);
+}
+.navbar a{
+  text-decoration: none;
+}
+.navbar a h2{
+  font-family: Acme;
+}
+.navbar a h2::first-letter{
+  color: red;
+  font-size: 50px;
+}
+.navbar .dropdown-menu{
+  background-color: rgb(15, 27, 51);
+}
+.navbar .dropdown-item:hover{
+  background-color: rgb(21, 37, 70);
+}
+.navbar .navbar-nav .nav-item{
+  margin-right: 15px;
+}
+.navbar .navbar-nav .nav-item:hover{
+  background-color: rgb(21, 37, 70);
+  border-radius: 10px;
+}
+
+/* admin create video page  */
+.create-video{
+  display: flex;
+  height: 80vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.create-video input{
+  width: 500px;
+}
+@media only screen and (max-width: 768px) {
+  .create-video input{
+    width: 400px;
+  }
+  .create-video{
+    margin-top: 40px;
+  }
+}
+
+/* thumbnail css */
+
+.thumbnail {
+  background-color: rgb(19, 32, 59);
+  padding: 10px;
+  border: 1px solid #1a2c4d;
+  border-radius: 5px;
+}
+.thumbnail:hover{
+  background-color: rgb(15, 27, 51);
+  padding: 10px;
+  border: 1px solid #1a2c4d;
+  border-radius: 5px;
+}
+
+.thumbnail img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 9px;
+}
+.thumbnail a{
+  text-decoration: none;
+}
+
+/* Video Page  */
+.redi{
+  border-radius: 10px;
+}
+.redi video{
+  border-radius: 10px;
+}
+
+/* search bar */
+.search-main-div input{
+  width: 400px;
+}
+
+/* log in page */
+.login{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 40vh;
+  
+}
+.login input{
+  width: 400px;
+}
+@media only screen and (max-width: 768px) {
+  .login input{
+    width: 400px;
+  }
+}
+.login button{
+  width: 300px;
+}
+/* signup page */
+.signup{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.signup form input{
+  width: 400px;
+}
+.signup form button{
+  width: 150px;
+}
+
+/* new-category page */
+.new-category{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 50vh;
+}
+.new-category input{
+  width: 400px;
+}
+.new-category button{
+  width: 350px;
+}
+@media only screen and (max-width: 768px){
+  .new-category button{
+    width: 150px;
+  }
+}
+
+/* edit-profile page */
+.edit-profile input{
+  width: 400px;
+}
+.edit-profile form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.edit-profile button{
+  width: 350px;
+}
+.modal{
+  background-color: #1a2c4d;
+  color: black;
+}
+.modal .modal-dialog{
+  background-color: #1a2c4d;
+}

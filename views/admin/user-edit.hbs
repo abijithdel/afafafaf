@@ -1,0 +1,25 @@
+<div class="container edit-profile">
+    <h1 class="text-center m-3">Update {{data.fname}} User Data</h1>
+    {{#if emailError}}
+    <div class="alert alert-success mb-3 mt-3" role="alert">
+        {{emailError}}
+    </div>
+    {{/if}}
+    <form action="/admin/user-edit/{{data._id}}" method="post">
+        <div class="mb-3">
+            <label for="fname" class="form-label">First Name</label>
+            <input type="text" class="form-control" name="fname" required value="{{data.fname}}">
+        </div>
+        <div class="mb-3">
+            <label for="lname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" name="lname" required value="{{data.lname}}">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" required value="{{data.email}}">
+        </div>
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
+</div>

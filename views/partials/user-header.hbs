@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-light nav-color">
+    <div class="container-fluid">
+        <a href="#">
+            <h2 class="text-white sphost-title title">Anime</h2>
+        </a>
+        <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/"><i class="bi bi-house-door-fill"></i> HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/anime"><i class="bi bi-camera-reels"></i> ANIMES</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/movie"><i class="bi bi-film"></i> MOVIES</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-collection-play"></i> CATEGORYS
+                    </a>
+                    <ul class="dropdown-menu dropdown-bg-color" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item text-white " href="/category" style="border-bottom: 1px solid white;">All Category</a></li>
+                        {{#each newCategory}}
+                        <li><a class="dropdown-item text-white" href="/category/specific-category/{{this.name}}">{{this.name}}</a></li>
+                        {{/each}}
+                    </ul>
+                </li>
+                {{#if user}}
+                <li class="nav-item dropdown" style="margin-right: 60px;">
+                    <a class="nav-link dropdown-toggle text-white" href="" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person"></i>  {{user.fname}}
+                    </a>
+                    <ul class="dropdown-menu dropdown-bg-color" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item text-white" href="/edit-profile">Profile</a></li>
+                        <li><a class="dropdown-item text-white" href="/reset-password">Reset Password</a></li>
+                        <li><a class="dropdown-item text-white bg-danger" href="/logout">Logout</a></li>
+                        <li><a class="dropdown-item text-white bg-danger" href="/admin">Admin</a></li>
+                    </ul>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/login">Log in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/signup">Sign up</a>
+                </li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</nav>

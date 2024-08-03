@@ -1,0 +1,28 @@
+<title>Reset Password | {{user.fname}}</title>
+<div class="container edit-profile">
+    {{#if done}}
+    <div class="alert alert-success mb-3 mt-3" role="alert">
+        {{done}}
+    </div>
+    {{/if}}
+
+    {{#if error}}
+    <div class="alert alert-danger text-center" role="alert">
+        {{error}}
+    </div>
+    {{/if}}
+    <h1 class="text-center m-3">Reset Password</h1>
+    <form action="/reset-password/{{user._id}}" method="post">
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" required>
+        </div>
+        <div class="mb-3">
+            <label for="cpassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" name="cpassword" required>
+        </div>
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>
+</div>

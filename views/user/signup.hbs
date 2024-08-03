@@ -1,0 +1,44 @@
+<title>Create Account Now</title>
+<div class="container">
+    <h1 class="text-center">Create Account</h1>
+    {{#if emailError}}
+    <div class="alert alert-danger text-cente" role="alert">
+        {{emailError}}
+    </div>
+    {{/if}}
+
+    {{#if passError}}
+    <div class="alert alert-danger text-center" role="alert">
+        {{passError}}
+    </div>
+    {{/if}}
+    <div class="signup">
+        <form action="/signup" method="post">
+            <div class="mb-3">
+                <label for="fname" class="form-label">First Name</label>
+                <input type="text" class="form-control" name="fname" required>
+            </div>
+            <div class="mb-3">
+                <label for="lname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" name="lname" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" required>
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="pass" class="form-label">Password</label>
+                <input type="password" class="form-control" name="pass" required>
+            </div>
+            <div class="mb-3">
+                <label for="cpass" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" name="cpass" required>
+            </div>
+            <a href="/login">I have an account</a>
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div>

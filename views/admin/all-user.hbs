@@ -1,0 +1,32 @@
+<title>All Users</title>
+<div class="container">
+    <h1 class="text-center m-4">All Users</h1>
+    <table class="table">
+        <thead class="text-white">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Edit / Delete</th>
+            </tr>
+        </thead>
+        <tbody class="text-white">
+            {{#each data}}
+            <tr>
+                <th scope="row">{{@index}}</th>
+                <td>{{this.fname}}</td>
+                <td>{{this.lname}}</td>
+                <td>{{this.email}}</td>
+                <td>
+                    <a href="/admin/user-edit/{{this._id}}" class="btn btn-info mt-1">Edit</a>
+                    <a href="/admin/delete-user/{{this._id}}" class="btn btn-danger">Delete</a>
+                </td>
+
+            </tr>
+
+            {{/each}}
+        </tbody>
+    </table>
+
+</div>
