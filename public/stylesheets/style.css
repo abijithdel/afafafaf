@@ -92,6 +92,28 @@ body {
   border-radius: 10px;
 }
 
+
+.video-slider .list-group img{
+  background-color: #1a2c4d;
+  border: none;
+}
+.video-slider .list-group-item{
+  border-radius: 10px;
+}
+.video .comment{
+  width: 660px;
+  height: 40px;
+  background-color: #1a2c4d;
+  color: white;
+  border: 2px solid grey;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.video a{
+  text-decoration: none;
+  color: white;
+}
+
 /* search bar */
 .search-main-div input{
   width: 400px;
@@ -213,15 +235,6 @@ footer .footer-section .footer-contact a{
   justify-content: center;
 }
 
-/* video slider */
-
-.video-slider .list-group img{
-  background-color: #1a2c4d;
-  border: none;
-}
-.video-slider .list-group-item{
-  border-radius: 10px;
-}
 
 /* delete category */
 .delete-category{

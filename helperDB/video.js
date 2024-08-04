@@ -7,7 +7,8 @@ const videoSchema = new Schema({
     description: { type: String, required: true },
     videoPath: { type: String, required: true }, // Use videoPath instead of video
     imgPath: { type: String, required: true }, // Use imgPath instead of thumbnail
-    category: { type: String, required: true }
+    category: { type: String, required: true },
+    views: { type: Number, default: 0 }
 });
 
 module.exports = mongoose.model('Video', videoSchema);

@@ -48,7 +48,9 @@ router.get('/video/:id', async function(req, res, next) {
       return res.status(404).send('Video not found');
     }
 
- 
+    spVideo.views += 1;
+    await spVideo.save();
+
     const newCategory = await Category.find();
     const spCategory = await Video.find({ category: new RegExp(spVideo.category, 'i') });
 
