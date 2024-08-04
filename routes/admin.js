@@ -17,16 +17,18 @@ const userlogin=(req,res,nest)=>{
 
 
 
-router.get('/',userlogin, function(req, res, next) {
+router.get('/',userlogin,async function(req, res, next) {
   var role = req.session.userSession.role
   if (role === 'admin'){
     var admin =true
-    res.render('admin/admin',{admin,user:req.session.userSession})
+    var video = await Video.countDocuments()
+    var category = await Category.countDocuments()
+    var user = await User.countDocuments()
+    res.render('admin/admin',{admin,user:req.session.userSession,video,category,user})
   }else{
     admin =false
     res.redirect('/')
   }
-  
 });
 
 router.get('/create-video',userlogin, function(req, res, next) {
@@ -60,7 +62,7 @@ router.post('/create-video',
           });
 
           await newVideo.save();
-          res.send('Video uploaded successfully');
+          res.redirect('/admin/all-videos')
       } catch (error) {
           console.error(error);
           res.status(500).send('Server Error');
@@ -131,7 +133,7 @@ router.post('/create-category', async (req, res) => {
     await newCategory.save();
 
     // Send a success response
-    res.status(201).render('category/create',{ message: 'Category created successfully'});
+    res.status(201).redirect('/admin/all-category');
   } catch (err) {
     console.error('Error:', err);
     res.status(500).json({ message: 'Server Error' });
@@ -372,6 +374,20 @@ router.get('/all-slider',userlogin, async (req,res)=>{
     var admin =true
     var data = await Slider.find()
     res.render('admin/all-slider',{data,admin})
+  }else{
+    admin =false
+    res.redirect('/')
+  }
+})
+
+router.get('/delete-item/:id',userlogin, async (req,res)=>{
+  var role = req.session.userSession.role
+  if (role === 'admin'){
+    var admin =true
+    var data = await Category.findById(req.params.id)
+    var video = await Video.findById(req.params.id)
+    var user = await User.findById(req.params.id)
+    res.render('admin/delete-item',{data,video,user,admin})
   }else{
     admin =false
     res.redirect('/')

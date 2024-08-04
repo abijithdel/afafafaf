@@ -4,7 +4,7 @@
         <!-- Main Video Section -->
         <div class="col-lg-8 col-md-12">
             <div class="video-container redi">
-                <video width="100%" controls poster="/{{spVideo.imgPath}}">
+                <video width="100%" controls poster="/{{spVideo.imgPath}}" autoplay>
                     <source src="/{{spVideo.videoPath}}" type="video/mp4">
                 </video>
             </div>
@@ -12,17 +12,18 @@
             <p>217K views | <a href="">{{spVideo.category}}</a> </p>
             <hr>
             <p>{{spVideo.description}}</p>
-
+            <hr>
         </div>
         <!-- Sidebar Section -->
-        {{!-- <div class="col-lg-4 col-md-12">
-            <h5 class="mt-4">{{y.category}}</h5>
+        {{#each spCategory}}
+        <div class="col-lg-4 col-md-12 video-slider">
             <div class="list-group ">
-                <a href="{% url "video" y.id y.category %}" class="list-group-item list-group-item-action text-white" style="background-color: rgb(19, 32, 59); ">
-                    <img src="{{y.image.url}}" class="img-thumbnail mr-3 redi" alt="Video Thumbnail" >
-                    {{y.title}}
+                <a href="" class="list-group-item list-group-item-action text-white" style="background-color: rgb(19, 32, 59); ">
+                    <img src="/{{this.imgPath}}" class="img-thumbnail mr-3 redi" alt="Video Thumbnail" >
+                    {{this.title}}
                 </a>
             </div>
-        </div> --}}
+        </div>
+        {{/each}}
     </div>
 </div>

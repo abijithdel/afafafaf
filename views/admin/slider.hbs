@@ -1,7 +1,10 @@
 <title>Admin slider</title>
 <div class="container">
-    <h2 class="text-center m-3">Create New Slider</h2>
-    <form class="new-category" action="/admin/create-slider" method="post" enctype="multipart/form-data">
+    <h2 class="text-center m-3 title-Acme">Create New Slider</h2>
+    <div class="alert alert-danger" role="alert">
+        Not Working..!
+    </div>
+    <form class="new-category m-4" action="/admin/create-slider" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" name="name" placeholder="Enter New Slider Name" required />
@@ -19,6 +22,6 @@
             <label for="sliderimg" class="form-label">Slider Image</label>
             <input type="file" class="form-control" name="sliderimg" />
         </div>
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary ">Create</button>
     </form>
 </div>

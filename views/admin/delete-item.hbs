@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="delete-category">
+        {{#if data}}
+        <h1 class="text-danger">Delete.Warning</h1>
+        <p>Are You Sure..</p>
+        <h3 class="text-warning">Category !{{data.name}}</h3>
+        <a href="/admin/delete-category/{{data._id}}" class="btn btn-danger">Delete</a>
+        {{/if}}
+
+        {{#if video}}
+        <h1 class="text-danger">Delete.Warning</h1>
+        <p>Are You Sure..</p>
+        <a href="/video/{{video._id}}"><img style="width: 200px; height: 100px; margin: 10px; border-radius: 10px;"
+                src="/{{video.imgPath}}"></a>
+        <a href="/admin/delete-videos/{{video._id}}" class="btn btn-danger">Delete</a>
+        {{/if}}
+
+        {{#if user}}
+        <h1 class="text-danger">Delete.Warning</h1>
+        <p>Are You Sure ..</p>
+        <h3 class="text-warning">User !{{user.fname}} {{user.lname}}</h3>
+        <a href="/admin/delete-user/{{user._id}}" class="btn btn-danger">Delete</a>
+        {{/if}}
+    </div>
+</div>

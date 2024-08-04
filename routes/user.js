@@ -40,10 +40,24 @@ router.get('/movie',async function(req, res, next) {
 });
 
 router.get('/video/:id', async function(req, res, next) {
-  var {id} = req.params
-  var spVideo = await Video.findById(id)
-  const newCategory = await Category.find()
-  res.render('user/video',{newCategory,spVideo,user:req.session.userSession});
+  try {
+    const { id } = req.params;
+    const spVideo = await Video.findById(id);
+    
+    if (!spVideo) {
+      return res.status(404).send('Video not found');
+    }
+
+ 
+    const newCategory = await Category.find();
+    const spCategory = await Video.find({ category: new RegExp(spVideo.category, 'i') });
+
+
+    res.render('user/video', { newCategory, spVideo, user: req.session.userSession, spCategory});
+
+  } catch (error) {
+    next(error);
+  }
 });
 
 
