@@ -5,6 +5,7 @@ var User = require('../helperDB/user')
 var bcrypt = require('bcrypt');
 const Category = require('../helperDB/category')
 const Slider = require('../helperDB/slider')
+const Playlist = require('../helperDB/playlist')
 
 /* GET home page. */
 const userlogin=(req,res,nest)=>{
@@ -241,5 +242,67 @@ router.post('/reset-password/:uid', userlogin, async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
+router.get('/playlist', userlogin, async (req, res) => {
+  const userId = req.session.userSession;
+  const newlist = []
+  const newCategory = await Category.find()
+  try {
+    // Find the playlist for the user
+    const playlist = await Playlist.findOne({ userid: userId }).populate('video.videoid');
+    
+    // playlist.video.videoid
+
+    if (!playlist) {
+      return res.status(404).json({ message: 'Playlist not found' });
+    }
+    for (var i=0;i<playlist.video.length;i++){
+      var vId = playlist.video[i].videoid
+      var inVideo = await Video.findById(vId)
+      if (inVideo){
+        newlist.push(inVideo)
+      }
+    }
+
+    // Render the playlist page with the playlist data
+    res.render('user/playlist', { newlist ,user:req.session.userSession, newCategory});
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+router.get('/playlist/:id', userlogin, async (req, res) => {
+  const videoId = req.params.id;
+  const userId = req.session.userSession;
+
+  try {
+    // Find the playlist for the user
+    let playlist = await Playlist.findOne({ userid: userId });
+
+    if (!playlist) {
+      // Create a new playlist if it doesn't exist
+      playlist = new Playlist({ userid: userId });
+    }
+
+    // Check if the video is already in the playlist
+    const videoExists = playlist.video.some(v => v.videoid === videoId);
+
+    if (!videoExists) {
+      // Add the video to the playlist
+      playlist.video.push({ videoid: videoId });
+    }
+
+    // Save the playlist
+    await playlist.save();
+
+    // Send a success response
+    res.status(200).redirect('/playlist')
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 
 module.exports = router;

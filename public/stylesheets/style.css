@@ -82,6 +82,14 @@ body {
 .thumbnail a{
   text-decoration: none;
 }
+.thumbnail .pt-2 a{
+  text-decoration: none;
+  color: white;
+}
+.thumbnail .pt-2 a:hover{
+  text-decoration: underline;
+  color: grey;
+}
 
 
 /* Video Page  */
